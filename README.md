@@ -35,12 +35,12 @@ Use cases for params examples:
 
 ### Execute Inline Without Cloning
 
-```
-& ([scriptblock]::Create((iwr <urlToPowershell.ps1> -useb))) [params]
+```ps1
+& ([scriptblock]::Create((iwr <urlToPowershell.ps1> -useb))) -Env <String>
 ```
 
 ### Execute Offline
 
 ```ps1
-powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\build.ps1
+powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\build.ps1 -Env <String>
 ```
