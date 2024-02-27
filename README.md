@@ -33,6 +33,14 @@ Use cases for params examples:
 - GMT have changes, but Security doesnt have changes, build & publish for GMT only
 - Both Security & GMT has changes, build & publish both
 
+### Execute Inline Without Cloning
+
+```
+& ([scriptblock]::Create((iwr <urlToPowershell.ps1> -useb))) [params]
+```
+
+### Execute Offline
+
 ```ps1
 powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\build.ps1
 ```
