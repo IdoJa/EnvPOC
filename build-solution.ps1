@@ -54,6 +54,9 @@ function Build-Solution {
     # Overwrite `$appsettings` to appsettings.json.
     $appsettings | ConvertTo-Json | Set-Content -Path $appsettingsPath
 
+    Write-Output "Building with"
+    Write-Output "Environment: $($appsettings.Environment)" 
+
     # Build solution.
     dotnet build
 
