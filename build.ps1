@@ -1,57 +1,85 @@
 <#
-  .DESCRIPTION
-  A script that builds multiple solutions according to the given environment parameter.
+    .DESCRIPTION
+    A script that builds multiple solutions according to the given environment
+    parameter.
 
-  .PARAMETER Env
-  Specify the target environment to build the solutions for.
+    .PARAMETER Env
+    Specify the target environment to build the solutions for.
 
-  .EXAMPLE
-  PS> # Builds the solutions for "dev" environment.
-  PS> .\build -Env dev
+    .EXAMPLE
+    PS> # Builds the solutions for "dev" environment.
+    PS> .\build -Env dev
 
-  .EXAMPLE
-  PS> # Builds the solutions for "prod" environment.
-  PS> .\build -Env prod
+    .EXAMPLE
+    PS> # Builds the solutions for "prod" environment.
+    PS> .\build -Env prod
 #>
 
 param (
     [parameter(mandatory)][string]$Env
 )
 
+function Build-Solution {
+    param (
+        [parameter(mandatory)][string]$Path,
+        [parameter(mandatory)][string]$Env = $Env
+    )
 
-### Rewrite appsettings.json with the given parameter.
+    <#
+        .SYNOPSIS
+        Builds a solution according to a given solution path, and environment
+        parameter.
 
-cd EnvPOC1
+        .DESCRIPTION
+        1. Finds the appsettings of the given solution path, and changes its
+           `Environment` key value, by the given environemnt parameter.
+        2. Builds the solution.
+        3. Restores the appsettings to its original state.
 
-# Read appsettings.json to `$appsettings`.
-$appsettings = Get-Content -Path EnvPOC\appsettings.json -Raw | ConvertFrom-Json
+        .PARAMETER Path
+        Specify the target solution path to build the solution for.
 
-# Deep copy `$appsettings` to `$appsettingsTemp`.
-$appsettingsTemp = $appsettings | ConvertTo-Json | ConvertFrom-Json
+        .PARAMETER Env
+        Specify the target environment to build the solution for.
 
-# Set the Environemnt key of `$appsettings` the given `$Env` parameter.
-$appsettings.Environment = $Env
+        .EXAMPLE
+        PS> # Builds the solution which is located at "MyFirstSolutionPath" for "dev" environment.
+        PS> Build-Solution -Path "MyFirstSolutionPath" -Env dev
 
-Write-Output $appsettingsTemp
-Write-Output $appsettings
+        .EXAMPLE
+        PS> # Builds the solution which is located at "MyFirstSecondSolutionPath" for "prod" environment.
+        PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod
+    #>
 
-# Overwrite `$appsettings` to appsettings.json.
-$appsettings | ConvertTo-Json | Set-Content -Path EnvPOC\appsettings.json
+    # Save current path, and navigate to the given solution path.
+    $currentPath = $(Get-Location).Path
+    cd $Path
 
-# Build EnvPOC1
-dotnet build
+    # Find the path to the appsettings.json of the source code.
+    $appsettingsPath = Get-ChildItem -Path . -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
 
-# Restore appsettings.json to its original state
-$appsettingsTemp | ConvertTo-Json | Set-Content -Path EnvPOC\appsettings.json
+    # Read appsettings.json to `$appsettings`.
+    $appsettings = Get-Content -Path $appsettingsPath -Raw | ConvertFrom-Json
 
-cd ..
+    # Deep copy `$appsettings` to `$appsettingsTemp`.
+    $appsettingsTemp = $appsettings | ConvertTo-Json | ConvertFrom-Json
+
+    # Set the Environemnt key of `$appsettings` the given `$Env` parameter.
+    $appsettings.Environment = $Env
+
+    # Overwrite `$appsettings` to appsettings.json.
+    $appsettings | ConvertTo-Json | Set-Content -Path $appsettingsPath
+
+    # Build solution.
+    dotnet build
+
+    # Restore appsettings.json to its original state.
+    $appsettingsTemp | ConvertTo-Json | Set-Content -Path $appsettingsPath
+
+    # Restore the original path.
+    cd $currentPath
+}
 
 
-
-
-
-
-# Build EnvPOC2
-cd EnvPOC2
-dotnet build
-cd ..
+Build-Solution -Path "EnvPOC1" -Env $Env
+Build-Solution -Path "EnvPOC2" -Env $Env
