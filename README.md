@@ -27,6 +27,10 @@ do this for Security & GMT
 > ### Prerequisites
 > save the password of publish to azure on PC or env file
 
+> References:
+> - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
+> - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
+
 Write script that changes all the appsettings environment to the desired environment
 and builds the solutions and publishes to Azure (only if the desired environment is "azure" based (i.e. dev, test, prod))
 
@@ -54,10 +58,6 @@ powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String
 RightClick on the PowerShell script -> Run with PowerShell
 
 ![](https://i.imgur.com/ENrlHF7.png)
-
-> References:
-> - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
-> - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
 
 ### Help
 
