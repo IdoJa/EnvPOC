@@ -6,17 +6,22 @@
     .PARAMETER Env
     Specify the target environment to build the solutions for.
 
+    .PARAMETER Continue
+    Set the `-Continue` option, to not prompt the "Press any key to continue..."
+    message at the end of the script.
+
     .EXAMPLE
     PS> # Builds the solutions for "dev" environment.
     PS> .\Build -Env dev
 
     .EXAMPLE
-    PS> # Builds the solutions for "prod" environment.
-    PS> .\Build -Env prod
+    PS> # Builds the solutions for "prod" environment, and does not prompt the "Press any key to continue..." message at the end of the script.
+    PS> .\Build -Env prod -Continue
 #>
 
 param (
-    [parameter(mandatory)][string]$Env
+    [parameter(mandatory)][string]$Env,
+    [parameter()][switch]$Continue
 )
 
 # ----------------------------------- Imports ---------------------------------
@@ -29,4 +34,7 @@ param (
 Build-Solution -Path "EnvPOC1" -Env $Env
 Build-Solution -Path "EnvPOC2" -Env $Env
 
-PressAnyKeyToContinue
+if ($Continue -eq $false)
+{
+    PressAnyKeyToContinue
+}

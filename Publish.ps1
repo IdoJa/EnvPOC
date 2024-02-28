@@ -6,17 +6,30 @@
     .PARAMETER Env
     Specify the target environment to build and publish the solutions for.
 
+    .PARAMETER Continue
+    Set the `-Continue` option, to not prompt the "Press any key to continue..."
+    message at the end of the script.
+
     .EXAMPLE
     PS> # Builds the solutions for "dev" environment, and then publishes to Azure.
     PS> .\Publish -Env dev
 
     .EXAMPLE
-    PS> # Builds the solutions for "prod" environment, and then publishes to Azure.
-    PS> .\Publish -Env prod
+    PS> # Builds the solutions for "prod" environment, and then publishes to Azure, and does not prompt the "Press any key to continue..." message at the end of the script.
+    PS> .\Publish -Env prod -Continue
 #>
 
 param (
-    [parameter(mandatory)][string]$Env
+    [parameter(mandatory)][string]$Env,
+    [parameter()][switch]$Continue
 )
 
-.\Build.ps1 -Env $Env
+# ----------------------------------- Imports ---------------------------------
+
+. "$PSScriptRoot\Publish-Build.ps1"
+. "$PSScriptRoot\Utils.ps1"
+
+# ------------------------------------ Code -----------------------------------
+
+.\Build.ps1 -Env $Env -Continue
+Publish-Build -Path "PATH_OF_BUILD_TO_PUBLISH" -Env $Env
