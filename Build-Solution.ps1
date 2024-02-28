@@ -1,35 +1,30 @@
-<#
-    .SYNOPSIS
-    Builds a solution according to a given solution path, and environment
-    parameter.
-
-    .DESCRIPTION
-    1. Finds the appsettings of the given solution path, and changes its
-        `Environment` key value, by the given environemnt parameter.
-    2. Builds the solution.
-    3. Restores the appsettings to its original state.
-
-    .PARAMETER Path
-    Specify the target solution path to build the solution for.
-
-    .PARAMETER Env
-    Specify the target environment to build the solution for.
-
-    .EXAMPLE
-    PS> # Builds the solution which is located at "MyFirstSolutionPath" for "dev" environment.
-    PS> Build-Solution -Path "MyFirstSolutionPath" -Env dev
-
-    .EXAMPLE
-    PS> # Builds the solution which is located at "MyFirstSecondSolutionPath" for "prod" environment.
-    PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod
-#>
-
-param (
-    [parameter(mandatory)][string]$Path,
-    [parameter(mandatory)][string]$Env
-)
-
 function Build-Solution {
+    <#
+        .SYNOPSIS
+        Builds a solution according to a given solution path, and environment
+        parameter.
+
+        .DESCRIPTION
+        1. Finds the appsettings of the given solution path, and changes its
+            `Environment` key value, by the given environemnt parameter.
+        2. Builds the solution.
+        3. Restores the appsettings to its original state.
+
+        .PARAMETER Path
+        Specify the target solution path to build the solution for.
+
+        .PARAMETER Env
+        Specify the target environment to build the solution for.
+
+        .EXAMPLE
+        PS> # Builds the solution which is located at "MyFirstSolutionPath" for "dev" environment.
+        PS> Build-Solution -Path "MyFirstSolutionPath" -Env dev
+
+        .EXAMPLE
+        PS> # Builds the solution which is located at "MyFirstSecondSolutionPath" for "prod" environment.
+        PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod
+    #>
+
     param (
         [parameter(mandatory)][string]$Path,
         [parameter(mandatory)][string]$Env
@@ -66,5 +61,3 @@ function Build-Solution {
     # Restore the original path.
     cd $currentPath
 }
-
-Build-Solution -Path $Path -Env $Env

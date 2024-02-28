@@ -19,8 +19,11 @@ param (
     [parameter(mandatory)][string]$Env
 )
 
-.\Build-Solution.ps1 -Path "EnvPOC1" -Env $Env
-.\Build-Solution.ps1 -Path "EnvPOC2" -Env $Env
+# Imports
+. "$PSScriptRoot\Build-Solution.ps1"
+
+Build-Solution -Path "EnvPOC1" -Env $Env
+Build-Solution -Path "EnvPOC2" -Env $Env
 
 # Press any key to continue prompt.
 Write-Host -NoNewLine 'Press any key to continue...';
