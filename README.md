@@ -38,7 +38,7 @@ Use cases for params examples:
 ### Execute Inline Without Cloning
 
 ```ps1
-& ([scriptblock]::Create((iwr <urlToPowershell.ps1> -useb))) -Env <String>
+& ([scriptblock]::Create((iwr "https://raw.githubusercontent.com/IdoJa/EnvPOC/master/Build.ps1" -useb))) -Env <String>
 ```
 
 ### Execute Offline
