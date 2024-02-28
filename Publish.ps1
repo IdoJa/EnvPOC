@@ -33,7 +33,7 @@ param (
 
 .\Build.ps1 -Env $Env -Continue
 
-Publish-Build -Path "PATH_OF_BUILD_TO_PUBLISH" -Env $Env
+Publish-Build -Path "EnvPOC2" -Env $Env
 
 if ($Continue -eq $false)
 {
