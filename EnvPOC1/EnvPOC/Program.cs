@@ -1,6 +1,13 @@
+using EnvPOC;
 using System.Collections;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = EnvironmentSetter.CreateWebApplicationBuilder(args);
+
+IConfigurationSection appSettingsSection = builder.Configuration.GetSection("AppSettings");
+builder.Services.Configure<AppSettings>(appSettingsSection);
+AppSettings appSettings = appSettingsSection.Get<AppSettings>();
+
+new AppSettingsSingleton(appSettings);
 
 // Add services to the container.
 
@@ -10,13 +17,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
 
 app.UseSwagger();
 app.UseSwaggerUI();
