@@ -19,12 +19,14 @@ param (
     [parameter(mandatory)][string]$Env
 )
 
-# Imports
+# ----------------------------------- Imports ---------------------------------
+
 . "$PSScriptRoot\Build-Solution.ps1"
+. "$PSScriptRoot\Utils.ps1"
+
+# ------------------------------------ Code -----------------------------------
 
 Build-Solution -Path "EnvPOC1" -Env $Env
 Build-Solution -Path "EnvPOC2" -Env $Env
 
-# Press any key to continue prompt.
-Write-Host -NoNewLine 'Press any key to continue...';
-$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+PressAnyKeyToContinue
