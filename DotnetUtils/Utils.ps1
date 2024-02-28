@@ -1,6 +1,6 @@
 function PressAnyKeyToContinue {
     <#
-        .DESCRIPTION
+        .SYNOPSIS
         Show "Press any key to continue..." prompt.
         
         .EXAMPLE
