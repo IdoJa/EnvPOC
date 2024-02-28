@@ -39,13 +39,7 @@ Use cases for params examples:
 - GMT have changes, but Security doesnt have changes, build & publish for GMT only
 - Both Security & GMT has changes, build & publish both
 
-### Execute Inline Without Cloning
-
-```ps1
-& ([scriptblock]::Create((iwr "https://raw.githubusercontent.com/IdoJa/EnvPOC/master/Build.ps1" -useb))) -Env <String>
-```
-
-### Execute Offline
+### Execute
 
 #### By CLI
 
