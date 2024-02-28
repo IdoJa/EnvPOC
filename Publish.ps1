@@ -1,7 +1,7 @@
 <#
     .DESCRIPTION
     A script that builds multiple solutions according to the given environment
-    parameter, and then publishes it to Azure.
+    parameter, and then publishes them to Azure.
 
     .PARAMETER Env
     Specify the target environment to build and publish the solutions for.
