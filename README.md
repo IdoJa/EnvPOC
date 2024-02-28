@@ -41,9 +41,17 @@ Use cases for params examples:
 
 ### Execute Offline
 
+#### By CLI
+
 ```ps1
 powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String>
 ```
+
+#### By GUI
+
+RightClick on the PowerShell script -> Run with PowerShell
+
+![](https://i.imgur.com/ENrlHF7.png)
 
 > References:
 > - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
