@@ -25,7 +25,7 @@ do this for Security & GMT
 ## Stage 2: CD
 
 > ### Prerequisites
-> save the password of publish to azure on PC or env file
+> Save the password of publish to azure on PC or env file
 
 > References:
 > - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
@@ -44,7 +44,7 @@ Use cases for params examples:
 #### By CLI
 
 ```ps1
-powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String>
+PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String>
 ```
 
 #### By GUI
@@ -57,6 +57,6 @@ RightClick on the PowerShell script -> Run with PowerShell
 
 To view the full documentation of the script, run:
 
-```
-powershell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Full
+```ps1
+PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Full
 ```
