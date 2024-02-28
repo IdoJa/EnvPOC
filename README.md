@@ -57,7 +57,7 @@ powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String
 
 RightClick on the PowerShell script -> Run with PowerShell
 
-![](https://i.imgur.com/ENrlHF7.png)
+![](https://i.imgur.com/0sDaK0h.png)
 
 ### Help
 
