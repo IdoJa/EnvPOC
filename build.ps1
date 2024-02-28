@@ -21,3 +21,7 @@ param (
 
 .\Build-Solution.ps1 -Path "EnvPOC1" -Env $Env
 .\Build-Solution.ps1 -Path "EnvPOC2" -Env $Env
+
+# Press any key to continue prompt.
+Write-Host -NoNewLine 'Press any key to continue...';
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
