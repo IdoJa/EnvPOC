@@ -1,5 +1,7 @@
 # EnvPOC
 
+Build & Publish Multiple Dotnet Solutions To Azure.
+
 ## Stage 1: Seperate appsettings.json to 4 files
 
 > See [guide](https://biswakalyan-das.medium.com/multiple-appsettings-json-in-net-core-without-using-an-environment-variable-d4161c4b56bc) 
