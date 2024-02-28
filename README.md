@@ -42,7 +42,7 @@ Use cases for params examples:
 ### Execute Offline
 
 ```ps1
-powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\build.ps1 -Env <String>
+powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String>
 ```
 
 > References:

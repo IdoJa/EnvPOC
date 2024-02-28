@@ -8,16 +8,16 @@
 
     .EXAMPLE
     PS> # Builds the solutions for "dev" environment.
-    PS> .\build -Env dev
+    PS> .\Build -Env dev
 
     .EXAMPLE
     PS> # Builds the solutions for "prod" environment.
-    PS> .\build -Env prod
+    PS> .\Build -Env prod
 #>
 
 param (
     [parameter(mandatory)][string]$Env
 )
 
-.\build-solution.ps1 -Path "EnvPOC1" -Env $Env
-.\build-solution.ps1 -Path "EnvPOC2" -Env $Env
+.\Build-Solution.ps1 -Path "EnvPOC1" -Env $Env
+.\Build-Solution.ps1 -Path "EnvPOC2" -Env $Env
