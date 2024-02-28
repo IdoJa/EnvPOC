@@ -48,3 +48,11 @@ powershell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String
 > References:
 > - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
 > - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
+
+### Help
+
+To view the full documentation of the script, run:
+
+```
+powershell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Full
+```
