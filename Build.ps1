@@ -26,8 +26,8 @@ param (
 
 # ----------------------------------- Imports ---------------------------------
 
-. "$PSScriptRoot\Build-Solution.ps1"
-. "$PSScriptRoot\Utils.ps1"
+. "$PSScriptRoot\DotnetUtils\Build-Solution.ps1"
+. "$PSScriptRoot\DotnetUtils\Utils.ps1"
 
 # ------------------------------------ Code -----------------------------------
 
