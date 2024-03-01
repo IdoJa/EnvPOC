@@ -8,7 +8,6 @@ function Build-Solution {
         1. Finds the appsettings of the given solution path, and changes its
             `Environment` key value, by the given environemnt parameter.
         2. Builds the solution.
-        3. Restores the appsettings to its original state.
 
         .PARAMETER Path
         Specify the target solution path to build the solution for.
@@ -40,9 +39,6 @@ function Build-Solution {
     # Read appsettings.json to `$appsettings`.
     $appsettings = Get-Content -Path $appsettingsPath -Raw | ConvertFrom-Json
 
-    # Deep copy `$appsettings` to `$appsettingsTemp`.
-    $appsettingsTemp = $appsettings | ConvertTo-Json | ConvertFrom-Json
-
     # Set the Environemnt key of `$appsettings` the given `$Env` parameter.
     $appsettings.Environment = $Env
 
@@ -54,9 +50,6 @@ function Build-Solution {
 
     # Build solution.
     dotnet build
-
-    # Restore appsettings.json to its original state.
-    $appsettingsTemp | ConvertTo-Json | Set-Content -Path $appsettingsPath
 
     # Restore the original path.
     cd $currentPath
