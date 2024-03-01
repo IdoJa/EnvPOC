@@ -9,18 +9,28 @@ Build & Publish Multiple Dotnet Solutions To Azure.
 > ### Prerequisites
 > - TODO: for projects that have multiple settings that needs to be changed for the build example Credentials.cs (on Security) will be merged to appsettings
 
-Seperate appsettings.json to 4 files
-do this for security and gmt
+1. Add `appsettings.json` in the path of your `.csproj`, with the following format:
 
-- appsettings.dev.json
+   ```json
+   {
+       "Environment":  "dev"
+   }
+   ```
 
-- appsettings.test.json
+   and add it to `.gitignore`.
 
-- appsettings.prod.json
+1. Seperate appsettings.json to 4 files
+   do this for security and gmt
 
-- appsettings.local-dev.json
-
-do this for Security & GMT
+   - appsettings.dev.json
+   
+   - appsettings.test.json
+   
+   - appsettings.prod.json
+   
+   - appsettings.local-dev.json
+   
+   do this for Security & GMT
 
 ## Stage 2: CD
 
