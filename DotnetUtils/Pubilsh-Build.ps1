@@ -28,7 +28,13 @@ function Publish-Build {
     $currentPath = $(Get-Location).Path
     cd $Path
 
-    # Do something...
+    # Find the path to the $Env.pubxml of the publish profile to use.
+    # Verify `$publishProfilePath` is not null.
+    $publishProfilePath = Get-ChildItem -Path . -Filter *.$Env.pubxml -Recurse -ErrorAction SilentlyContinue -Force -Name
+    if (!$publishProfilePath) 
+    {
+        Write-Host "File with $Env.pubxml extension was not found in the current directory."
+    }
 
     # Restore the original path.
     cd $currentPath
