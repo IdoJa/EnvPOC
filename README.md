@@ -89,12 +89,12 @@ The [Publish.ps1](/Publish.ps1) script publishes the solutions or projects to a 
    Then you represent them with the corresponding files:
 
    - `my-publish-profile.dev.pubxml`
-   - `my-publish-profile2.dev.pubxml`
-   - `my-publish-profile3.dev.pubxml`
+   - `publish-profiles/my-publish-profile2.dev.pubxml`
+   - `publish-profiles/john-doe/my-publish-profile3.dev.pubxml`
    - `my-publish-profile.test.pubxml`
    - `my-publish-profile2.test.pubxml`
    - `my-publish-profile.prod.pubxml`
-   - `my-publish-profile.dev-local.pubxml`
+   - `publish-profiles-for-testing/my-publish-profile.dev-local.pubxml`
    
    Each file bundles the settings for each environment.
 

@@ -1,13 +1,13 @@
 function Build-Solution {
     <#
         .SYNOPSIS
-        Builds a solution according to a given solution path, and environment
-        parameter.
+        Builds a solution or project according to a given path, and environment
+        parameter, and build configuration.
 
         .DESCRIPTION
         1. Finds the appsettings of the given solution path, and changes its
-            `Environment` key value, by the given environemnt parameter.
-        2. Builds the solution.
+           `Environment` key value to the given environemnt parameter.
+        2. Builds the solution to the given build configuration.
 
         .PARAMETER Path
         Specify the target solution path to build the solution for.
@@ -15,42 +15,40 @@ function Build-Solution {
         .PARAMETER Env
         Specify the target environment to build the solution for.
 
-        .EXAMPLE
-        PS> # Builds the solution which is located at "MyFirstSolutionPath" for "dev" environment.
-        PS> Build-Solution -Path "MyFirstSolutionPath" -Env dev
+        .PARAMETER Configuration
+        Specify the target build configuration to pubilsh the build for.
+        May be `Release` or `Debug`. The default value is `Debug`.
 
         .EXAMPLE
-        PS> # Builds the solution which is located at "MyFirstSecondSolutionPath" for "prod" environment.
-        PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod
+        PS> # Builds the solution or project which is located at "MyFirstSolutionOrProjectPath" for "dev" environment, with the build configuration of "Debug".
+        PS> Build-Solution -Path "MyFirstSolutionOrProjectPath" -Env dev
+
+        .EXAMPLE
+        PS> # Builds the solution or project which is located at "MyFirstSecondSolutionPath" for "prod" environment, with the build configuration of "Release".
+        PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod -Configuration Release
     #>
 
     param (
         [parameter(mandatory)][string]$Path,
-        [parameter(mandatory)][string]$Env
+        [parameter(mandatory)][string]$Env,
+        [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = "Debug",
     )
 
-    # Save current path, and navigate to the given solution path.
-    $currentPath = $(Get-Location).Path
-    cd $Path
-
     # Find the path to the appsettings.json of the source code.
-    $appsettingsPath = Get-ChildItem -Path . -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
+    $appsettingsPath = Get-ChildItem -Path "$Path" -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
 
     # Read appsettings.json to `$appsettings`.
-    $appsettings = Get-Content -Path $appsettingsPath -Raw | ConvertFrom-Json
+    $appsettings = Get-Content -Path "$appsettingsPath" -Raw | ConvertFrom-Json
 
     # Set the Environemnt key of `$appsettings` the given `$Env` parameter.
     $appsettings.Environment = $Env
 
     # Overwrite `$appsettings` to appsettings.json.
-    $appsettings | ConvertTo-Json | Set-Content -Path $appsettingsPath
+    $appsettings | ConvertTo-Json | Set-Content -Path "$appsettingsPath"
 
-    Write-Output "Building with"
-    Write-Output "Environment: $($appsettings.Environment)" 
+    Write-Host "Building with"
+    Write-Host "Environment: $($appsettings.Environment)" 
 
     # Build solution.
-    dotnet build
-
-    # Restore the original path.
-    cd $currentPath
+    dotnet build "$Path" -c $Configuration
 }
