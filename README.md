@@ -79,7 +79,7 @@ PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Fu
 The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects stated in [Build.ps1](/Build.ps1), and then publishes those solutions or projects to a particular Azure desired environment, using a corresponding publish profile `*.<environment>.pubxml`.
 
 1. For each environment you wish to publish, you are required to attach a `.pubxml` file (exported from Azure), that states the settings for publishing it.
-   There are several ways to get it. The most obvious one is to get it from the portal by navigating to the blade of you Web app and then clicking on "More" and finally on "Get publish profile".
+   There are several ways to get it. The most obvious one is to get it from the portal by navigating to the blade of your Web app and then clicking on "More" and finally on "Get publish profile".
 
    ![](https://i.stack.imgur.com/mFpdx.png)
 
