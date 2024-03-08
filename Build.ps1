@@ -1,7 +1,7 @@
 <#
     .DESCRIPTION
-    A script that builds multiple solutions according to the given environment
-    parameter.
+    A script that builds multiple solutions or projects according to the given
+    environment parameter.
 
     .PARAMETER Env
     Specify the target environment to build the solutions for.
@@ -11,11 +11,11 @@
     message at the end of the script.
 
     .EXAMPLE
-    PS> # Builds the solutions for "dev" environment.
+    PS> # Builds the solutions or projects for "dev" environment.
     PS> .\Build -Env dev
 
     .EXAMPLE
-    PS> # Builds the solutions for "prod" environment, and does not prompt the "Press any key to continue..." message at the end of the script.
+    PS> # Builds the solutions or projects for "prod" environment, and does not prompt the "Press any key to continue..." message at the end of the script.
     PS> .\Build -Env prod -Continue
 #>
 
