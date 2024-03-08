@@ -106,6 +106,18 @@ The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects 
    
    Each file bundles the settings for each environment.
 
+### Edit the script to your needs
+
+In [Publish.ps1](/Publish.ps1), starting from line 42, edit or add lines to your specific pipeline needs.
+
+**For example:**
+
+```ps1
+Publish-Dotnet -Path "path\to\dotnet\solution.sln" -Env $Env -Configuration $Configuration
+Publish-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Configuration
+...
+```
+
 ### Usage
 
 #### By CLI
