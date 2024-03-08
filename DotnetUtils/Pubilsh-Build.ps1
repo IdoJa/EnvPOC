@@ -27,7 +27,7 @@ function Publish-Build {
     param (
         [parameter(mandatory)][string]$Path,
         [parameter(mandatory)][string]$Env,
-        [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = "Release",
+        [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = 'Release'
     )
 
     # Find the path to the $Env.pubxml of the publish profile to use.

@@ -31,7 +31,7 @@ function Build-Solution {
     param (
         [parameter(mandatory)][string]$Path,
         [parameter(mandatory)][string]$Env,
-        [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = "Debug",
+        [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = 'Debug'
     )
 
     # Find the path to the appsettings.json of the source code.

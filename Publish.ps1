@@ -26,7 +26,7 @@
 
 param (
     [parameter(mandatory)][string]$Env,
-    [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = "Release",
+    [parameter()][ValidateSet('Release', 'Debug')][string]$Configuration = 'Release',
     [parameter()][switch]$Continue
 )
 
