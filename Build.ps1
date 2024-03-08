@@ -36,8 +36,8 @@ param (
 
 # ------------------------------------ Code -----------------------------------
 
-Build-Solution -Path "EnvPOC1" -Env $Env -Configuration $Configuration
-Build-Solution -Path "EnvPOC2" -Env $Env -Configuration $Configuration
+Build-Solution -Path "EnvPOC1\EnvPOC.sln" -Env $Env -Configuration $Configuration
+Build-Solution -Path "EnvPOC2\EnvPOC.sln" -Env $Env -Configuration $Configuration
 
 if ($Continue -eq $false)
 {

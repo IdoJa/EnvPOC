@@ -35,14 +35,16 @@ function Build-Solution {
     )
 
     # Find the path to the appsettings.json of the source code.
-    $appsettingsPath = Get-ChildItem -Path "$Path" -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
-    if (!$appsettingsPath) 
+    $solutionOrProjectDirectoryPath = (Get-Item "$Path").Directory.FullName
+    $appsettingsRelativePath = Get-ChildItem -Path "$solutionOrProjectDirectoryPath" -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
+    if (!$appsettingsRelativePath) 
     {
         Write-Host "An 'appsettings.json' file was not found within the path of '$Path' or its subdirectories"
         [Environment]::Exit(1)
     }
 
     # Read appsettings.json to `$appsettings`.
+    $appsettingsPath = Join-Path -Path "$solutionOrProjectDirectoryPath" -ChildPath "$appsettingsRelativePath"
     $appsettings = Get-Content -Path "$appsettingsPath" -Raw | ConvertFrom-Json
 
     # Set the Environemnt key of `$appsettings` the given `$Env` parameter.
