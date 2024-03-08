@@ -32,14 +32,7 @@ Build & Publish Multiple Dotnet Solutions To Azure.
    
    do this for Security & GMT
 
-## Stage 2: CD
-
-> ### Prerequisites
-> Save the password of publish to azure on PC or env file
-
-> References:
-> - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
-> - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
+## Stage 2: CI
 
 Write script that changes all the appsettings environment to the desired environment
 and builds the solutions and publishes to Azure (only if the desired environment is "azure" based (i.e. dev, test, prod))
@@ -70,3 +63,12 @@ To view the full documentation of the script, run:
 ```ps1
 PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Full
 ```
+
+## Stage 3: CD
+
+> References:
+> - [Using Windows PowerShell scripts to publish to dev and test environments in Azure](https://learn.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-publishing-using-powershell-scripts?view=vs-2022)
+> - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
+
+> ### Prerequisites
+> Save the `.pubxml` files of publish to azure on PC or env file
