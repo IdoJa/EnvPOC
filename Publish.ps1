@@ -32,14 +32,14 @@ param (
 
 # ----------------------------------- Imports ---------------------------------
 
-. "$PSScriptRoot\DotnetUtils\Publish-Build.ps1"
+. "$PSScriptRoot\DotnetUtils\Publish-Dotnet.ps1"
 . "$PSScriptRoot\DotnetUtils\Utils.ps1"
 
 # ------------------------------------ Code -----------------------------------
 
 .\Build.ps1 -Env $Env -Configuration $Configuration -Continue
 
-Publish-Build -Path "EnvPOC2\EnvPOC.sln" -Env $Env
+Publish-Dotnet -Path "EnvPOC2\EnvPOC.sln" -Env $Env
 
 if ($Continue -eq $false)
 {

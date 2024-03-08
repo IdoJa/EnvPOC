@@ -1,4 +1,4 @@
-function Publish-Build {
+function Publish-Dotnet {
     <#
         .SYNOPSIS
         Publishes a given build to Azure, according to a given solution or project
@@ -17,11 +17,11 @@ function Publish-Build {
 
         .EXAMPLE
         PS> # Receives the solution located in "path\to\dotnet\solution.sln" with the build configuration of "Release" and the environment of "dev", and publishes it to Azure for "dev" environment.
-        PS> Publish-Build -Path "path\to\dotnet\solution.sln" -Env dev
+        PS> Publish-Dotnet -Path "path\to\dotnet\solution.sln" -Env dev
 
         .EXAMPLE
         PS> # Receives the project located in "path\to\dotnet\project.csproj" with the build configuration of "Debug" and the environment of "prod", and publishes it to Azure for "prod" environment.
-        PS> Publish-Build -Path "path\to\dotnet\project.csproj" -Env prod -Configuration Debug
+        PS> Publish-Dotnet -Path "path\to\dotnet\project.csproj" -Env prod -Configuration Debug
     #>
 
     param (
