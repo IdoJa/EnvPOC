@@ -35,7 +35,8 @@ function Publish-Build {
     $publishProfilePath = Get-ChildItem -Path . -Filter *.$Env.pubxml -Recurse -ErrorAction SilentlyContinue -Force -Name
     if (!$publishProfilePath) 
     {
-        Write-Host "File with $Env.pubxml extension was not found in the current directory."
+        Write-Host "A file with '$Env.pubxml' extension was not found in the current directory or its subdirectories."
+        [Environment]::Exit(1)
     }
 
     # Execute publish to Azure.
