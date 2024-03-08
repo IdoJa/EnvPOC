@@ -64,10 +64,6 @@ PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Fu
 
 ## Stage 3: CD - [Publish.ps1](/Publish.ps1)
 
-> References:
-> - [how-to-deploy-a-net-web-app-to-azure-using-powershell](https://stackoverflow.com/a/40702390)
-> - [dotnet publish with /p:PublishProfile=?](https://stackoverflow.com/a/52213458)
-
 The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects stated in [Build.ps1](/Build.ps1), and then publishes those solutions or projects to a particular Azure desired environment, using a corresponding publish profile `*.<environment>.pubxml`.
 
 1. For each environment you wish to publish, you are required to attach a `.pubxml` file (exported from Azure), that states the settings for publishing it.
