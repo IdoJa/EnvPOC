@@ -2,7 +2,7 @@
 
 Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
 
-## Stage 1: Seperate appsettings.json to 4 files
+## Stage 1: Create a seperate appsettings.json for every environment
 
 > See [Guide](https://biswakalyan-das.medium.com/multiple-appsettings-json-in-net-core-without-using-an-environment-variable-d4161c4b56bc)
 
@@ -39,6 +39,18 @@ Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
 ## Stage 2: CI - [Build.ps1](/Build.ps1)
 
 The [Build.ps1](/Build.ps1) script changes the `appsettings.json`'s `Environment` key of pre-defined solutions or projects to a desired environment, and builds them.
+
+### Edit the script to your needs
+
+In [Build.ps1](/Build.ps1), starting from line 39, edit or add lines to your specific pipeline needs.
+
+**For example:**
+
+```ps1
+Build-Dotnet -Path "path\to\dotnet\solution.sln" -Env $Env -Configuration $Configuration
+Build-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Configuration
+...
+```
 
 ### Usage
 
@@ -93,6 +105,18 @@ The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects 
    - `publish-profiles-for-testing/my-publish-profile.dev-local.pubxml`
    
    Each file bundles the settings for each environment.
+
+### Edit the script to your needs
+
+In [Publish.ps1](/Publish.ps1), starting from line 42, edit or add lines to your specific pipeline needs.
+
+**For example:**
+
+```ps1
+Publish-Dotnet -Path "path\to\dotnet\solution.sln" -Env $Env -Configuration $Configuration
+Publish-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Configuration
+...
+```
 
 ### Usage
 

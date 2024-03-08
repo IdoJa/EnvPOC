@@ -36,8 +36,8 @@ param (
 
 # ------------------------------------ Code -----------------------------------
 
-Build-Dotnet -Path "EnvPOC1\EnvPOC.sln" -Env $Env -Configuration $Configuration
-Build-Dotnet -Path "EnvPOC2\EnvPOC.sln" -Env $Env -Configuration $Configuration
+Build-Dotnet -Path "path\to\dotnet\solution.sln" -Env $Env -Configuration $Configuration
+Build-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Configuration
 
 if ($Continue -eq $false)
 {
