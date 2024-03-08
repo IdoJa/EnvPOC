@@ -1,4 +1,4 @@
-function Build-Solution {
+function Build-Dotnet {
     <#
         .SYNOPSIS
         Builds a solution or project according to a given path, and environment
@@ -7,13 +7,13 @@ function Build-Solution {
         .DESCRIPTION
         1. Finds the appsettings of the given solution path, and changes its
            `Environment` key value to the given environemnt parameter.
-        2. Builds the solution to the given build configuration.
+        2. Builds the solution or project to the given build configuration.
 
         .PARAMETER Path
-        Specify the target solution path to build the solution for.
+        Specify the target solution or project path to build.
 
         .PARAMETER Env
-        Specify the target environment to build the solution for.
+        Specify the target environment to build.
 
         .PARAMETER Configuration
         Specify the target build configuration to pubilsh the build for.
@@ -21,11 +21,11 @@ function Build-Solution {
 
         .EXAMPLE
         PS> # Builds the solution or project which is located at "MyFirstSolutionOrProjectPath" for "dev" environment, with the build configuration of "Debug".
-        PS> Build-Solution -Path "MyFirstSolutionOrProjectPath" -Env dev
+        PS> Build-Dotnet -Path "MyFirstSolutionOrProjectPath" -Env dev
 
         .EXAMPLE
         PS> # Builds the solution or project which is located at "MyFirstSecondSolutionPath" for "prod" environment, with the build configuration of "Release".
-        PS> Build-Solution -Path "MyFirstSecondSolutionPath" -Env prod -Configuration Release
+        PS> Build-Dotnet -Path "MyFirstSecondSolutionPath" -Env prod -Configuration Release
     #>
 
     param (

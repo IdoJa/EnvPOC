@@ -31,13 +31,13 @@ param (
 
 # ----------------------------------- Imports ---------------------------------
 
-. "$PSScriptRoot\DotnetUtils\Build-Solution.ps1"
+. "$PSScriptRoot\DotnetUtils\Build-Dotnet.ps1"
 . "$PSScriptRoot\DotnetUtils\Utils.ps1"
 
 # ------------------------------------ Code -----------------------------------
 
-Build-Solution -Path "EnvPOC1\EnvPOC.sln" -Env $Env -Configuration $Configuration
-Build-Solution -Path "EnvPOC2\EnvPOC.sln" -Env $Env -Configuration $Configuration
+Build-Dotnet -Path "EnvPOC1\EnvPOC.sln" -Env $Env -Configuration $Configuration
+Build-Dotnet -Path "EnvPOC2\EnvPOC.sln" -Env $Env -Configuration $Configuration
 
 if ($Continue -eq $false)
 {
