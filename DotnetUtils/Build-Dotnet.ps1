@@ -20,12 +20,12 @@ function Build-Dotnet {
         May be `Release` or `Debug`. The default value is `Debug`.
 
         .EXAMPLE
-        PS> # Builds the solution or project which is located at "MyFirstSolutionOrProjectPath" for "dev" environment, with the build configuration of "Debug".
-        PS> Build-Dotnet -Path "MyFirstSolutionOrProjectPath" -Env dev
+        PS> # Builds the solution which is located at "path\to\dotnet\solution.sln" for "dev" environment, with the build configuration of "Debug".
+        PS> Build-Dotnet -Path "path\to\dotnet\solution.sln" -Env dev
 
         .EXAMPLE
-        PS> # Builds the solution or project which is located at "MyFirstSecondSolutionPath" for "prod" environment, with the build configuration of "Release".
-        PS> Build-Dotnet -Path "MyFirstSecondSolutionPath" -Env prod -Configuration Release
+        PS> # Builds the project which is located at "path\to\dotnet\project.csproj" for "prod" environment, with the build configuration of "Release".
+        PS> Build-Dotnet -Path "path\to\dotnet\project.csproj" -Env prod -Configuration Release
     #>
 
     param (
