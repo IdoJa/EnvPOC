@@ -75,7 +75,7 @@ The [Publish.ps1](/Publish.ps1) script publishes the solutions or projects to a 
 
    ![](https://i.stack.imgur.com/mFpdx.png)
 
-1. For each environment you wish to publish, export its `.pubxml` file from Azure, and save it to the same path as of [Publish.ps1](/Publish.ps1), with the naming format of `your-publish-profile-name.<environment>.pubxml`.
+1. For each environment you wish to publish, export its `.pubxml` file from Azure, and save it to the same path as of [Publish.ps1](/Publish.ps1) (or an inner directory in that path), with the naming format of `your-publish-profile-name.<environment>.pubxml`.
 
    **For example:**
 
