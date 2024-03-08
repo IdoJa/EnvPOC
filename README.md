@@ -2,7 +2,7 @@
 
 Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
 
-## Stage 1: Seperate appsettings.json to 4 files
+## Stage 1: Create a seperate appsettings.json for every environment
 
 > See [Guide](https://biswakalyan-das.medium.com/multiple-appsettings-json-in-net-core-without-using-an-environment-variable-d4161c4b56bc)
 
