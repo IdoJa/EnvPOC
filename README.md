@@ -60,6 +60,8 @@ Build-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Con
 PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String> [-Configuration <Debug | Release>]
 ```
 
+![](https://i.imgur.com/G313A2b.gif)
+
 #### By GUI
 
 RightClick on the PowerShell script -> Run with PowerShell
