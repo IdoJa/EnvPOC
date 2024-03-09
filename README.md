@@ -84,38 +84,40 @@ PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command Get-Help .\Build.ps1 -Fu
 
 ## Stage 3: CD - [Publish.ps1](/Publish.ps1)
 
-The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects stated in [Build.ps1](/Build.ps1), and then publishes those solutions or projects to a particular Azure desired environment, using a corresponding publish profile `*.<environment>.pubxml`.
+The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects stated in [Build.ps1](/Build.ps1), and then publishes those solutions or projects to a particular Azure desired environment, using a corresponding "PublishProfile" `*.<environment>.pubxml`.
 
-1. For each environment you wish to publish, you are required to attach a `.pubxml` file (exported from Azure), that states the settings for publishing it.
-   There are several ways to get it. The most obvious one is to get it from the portal by navigating to the blade of your Web app and then clicking on "More" and finally on "Get publish profile".
+For each environment you wish to publish, you are required to attach a "PublishProfile" `.pubxml` file, that states the settings for publishing it.
 
-   ![](https://i.stack.imgur.com/mFpdx.png)
+See [How to genererate a PublishProfile .pubxml](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/visual-studio-publish-profiles?view=aspnetcore-8.0#publish-profiles).
 
-1. For each environment you wish to publish, export its `.pubxml` file from Azure, and the path of your `.csproj` (or an inner directory in that path), with the naming format of `<your-publish-profile-name>.<environment>.pubxml`.
-   Each file bundles the settings for each environment.
+Once you generate a `.pubxml` file, it will be located under the path of your `.csproj` at `Properties/PublishProfiles/{PROFILE NAME}.pubxml`.
 
-   **For example:**
+Rename the `.pubxml` file to the format of `<your-publish-profile-name>.<environment>.pubxml`.
 
-   In case you have the following environments:
+Each "PublishProfile" bundles the settings for each environment.
 
-   - `dev`
-   - `test`
-   - `prod`
-   - `dev-local`
+**For example:**
 
-   Then you represent them with the corresponding files:
+In case you have the following environments:
 
-   - `my-publish-profile.dev.pubxml`
-   - `my-publish-profile.test.pubxml`
-   - `my-publish-profile.prod.pubxml`
-   - `my-publish-profile.dev-local.pubxml`
+- `dev`
+- `test`
+- `prod`
+- `dev-local`
 
-   You can also place them in a directory or hierarchy of directories:
+Then you represent them with the corresponding files:
 
-   - `<directory>/my-publish-profile.dev.pubxml`
-   - `<directory>/my-publish-profile.test.pubxml`
-   - `<directory>/my-publish-profile.prod.pubxml`
-   - `<directory>/my-publish-profile.dev-local.pubxml`
+- `my-publish-profile.dev.pubxml`
+- `my-publish-profile.test.pubxml`
+- `my-publish-profile.prod.pubxml`
+- `my-publish-profile.dev-local.pubxml`
+
+You can also place them in a directory or hierarchy of directories:
+
+- `<directory>/my-publish-profile.dev.pubxml`
+- `<directory>/my-publish-profile.test.pubxml`
+- `<directory>/my-publish-profile.prod.pubxml`
+- `<directory>/my-publish-profile.dev-local.pubxml`
 
 ### Edit the script to your needs
 
