@@ -16,7 +16,8 @@ Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
 
    and add it to `.gitignore`.
 
-1. For each environment, create a new file in the path of your `.csproj`, with the naming format of `appsettings.<environment>.json`.
+1. For each environment, create a new file in the path of your `.csproj` (or an inner directory in that path), with the naming format of `appsettings.<environment>.json`.
+   Each file bundles the settings for each environment.
 
    **For example:**
 
@@ -33,8 +34,13 @@ Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
    - `appsettings.test.json`
    - `appsettings.prod.json`
    - `appsettings.dev-local.json`
-   
-   Each file bundles the settings for each environment.
+
+   You can also place them in a directory or hierarchy of directories:
+
+   - `<directory>/appsettings.dev.json`
+   - `<directory>/appsettings.test.json`
+   - `<directory>/appsettings.prod.json`
+   - `<directory>/appsettings.dev-local.json`
 
 ## Stage 2: CI - [Build.ps1](/Build.ps1)
 
@@ -85,7 +91,8 @@ The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects 
 
    ![](https://i.stack.imgur.com/mFpdx.png)
 
-1. For each environment you wish to publish, export its `.pubxml` file from Azure, and save it to the same path as of [Publish.ps1](/Publish.ps1) (or an inner directory in that path), with the naming format of `your-publish-profile-name.<environment>.pubxml`.
+1. For each environment you wish to publish, export its `.pubxml` file from Azure, and the path of your `.csproj` (or an inner directory in that path), with the naming format of `<your-publish-profile-name>.<environment>.pubxml`.
+   Each file bundles the settings for each environment.
 
    **For example:**
 
@@ -99,14 +106,16 @@ The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects 
    Then you represent them with the corresponding files:
 
    - `my-publish-profile.dev.pubxml`
-   - `publish-profiles/my-publish-profile2.dev.pubxml`
-   - `publish-profiles/john-doe/my-publish-profile3.dev.pubxml`
    - `my-publish-profile.test.pubxml`
-   - `my-publish-profile2.test.pubxml`
    - `my-publish-profile.prod.pubxml`
-   - `publish-profiles-for-testing/my-publish-profile.dev-local.pubxml`
-   
-   Each file bundles the settings for each environment.
+   - `my-publish-profile.dev-local.pubxml`
+
+   You can also place them in a directory or hierarchy of directories:
+
+   - `<directory>/my-publish-profile.dev.pubxml`
+   - `<directory>/my-publish-profile.test.pubxml`
+   - `<directory>/my-publish-profile.prod.pubxml`
+   - `<directory>/my-publish-profile.dev-local.pubxml`
 
 ### Edit the script to your needs
 
