@@ -31,13 +31,15 @@ function Publish-Dotnet {
     )
 
     # Find the path to the $Env.pubxml of the publish profile to use.
-    # Verify `$publishProfilePath` is not null.
-    $publishProfilePath = Get-ChildItem -Path . -Filter *.$Env.pubxml -Recurse -ErrorAction SilentlyContinue -Force -Name
-    if (!$publishProfilePath) 
+    $solutionOrProjectDirectoryPath = (Get-Item "$Path").Directory.FullName
+    $publishProfileRelativePath = Get-ChildItem -Path "$solutionOrProjectDirectoryPath" -Filter *.$Env.pubxml -Recurse -ErrorAction SilentlyContinue -Force -Name
+    if (!$publishProfileRelativePath)
     {
-        Write-Host "A file with '$Env.pubxml' extension was not found in the current directory or its subdirectories."
+        Write-Host "A file with '$Env.pubxml' extension was not found within the path of '$solutionOrProjectDirectoryPath' or its subdirectories."
         [Environment]::Exit(1)
     }
+
+    $publishProfilePath = Join-Path -Path "$solutionOrProjectDirectoryPath" -ChildPath "$publishProfileRelativePath"
 
     # Execute publish to Azure.
     dotnet publish "$Path" --no-build -c $Configuration /p:PublishProfile="$publishProfilePath"
