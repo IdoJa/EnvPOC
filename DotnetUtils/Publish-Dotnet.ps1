@@ -42,5 +42,5 @@ function Publish-Dotnet {
     $publishProfilePath = Join-Path -Path "$solutionOrProjectDirectoryPath" -ChildPath "$publishProfileRelativePath"
 
     # Execute publish to Azure.
-    dotnet publish "$Path" --no-build -c $Configuration /p:PublishProfile="$publishProfilePath"
+    dotnet publish "$Path" --no-build -c $Configuration /p:PublishProfile="$publishProfilePath" /p:WebPublishProfileFile="$publishProfilePath"
 }
