@@ -57,7 +57,7 @@ Build-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $Con
 #### By CLI
 
 ```ps1
-PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String> [-Configuration <Debug | Release>]
+PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Build.ps1 -Env <String> [-Configuration <Debug | Release>] [-Continue]
 ```
 
 ![](https://i.imgur.com/G313A2b.gif)
@@ -125,7 +125,7 @@ Publish-Dotnet -Path "path\to\dotnet\project.csproj" -Env $Env -Configuration $C
 #### By CLI
 
 ```ps1
-PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Publish.ps1 -Env <String> [-Configuration <Debug | Release>]
+PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Publish.ps1 -Env <String> [-Configuration <Debug | Release>] [-Continue]
 ```
 
 #### By GUI
