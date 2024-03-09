@@ -32,7 +32,7 @@ Build & Publish Multiple Dotnet Solutions Or Projects To Azure.
    - `appsettings.dev.json`
    - `appsettings.test.json`
    - `appsettings.prod.json`
-   - `appsettings.local-dev.json`
+   - `appsettings.dev-local.json`
    
    Each file bundles the settings for each environment.
 
