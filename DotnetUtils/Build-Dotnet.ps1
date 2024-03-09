@@ -55,6 +55,7 @@ function Build-Dotnet {
 
     Write-Host "Building with"
     Write-Host "Environment: $($appsettings.Environment)" 
+    Write-Host "Configuration: $Configuration"
 
     # Build solution.
     dotnet build "$Path" -c $Configuration
