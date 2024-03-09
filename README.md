@@ -143,7 +143,7 @@ PowerShell.exe -NoLogo -ExecutionPolicy Bypass -Command .\Publish.ps1 -Env <Stri
 
 RightClick on the PowerShell script -> Run with PowerShell
 
-![](https://i.imgur.com/J4U87sd.png)
+![](https://i.imgur.com/6POEq20.png)
 
 ### Help
 
