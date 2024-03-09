@@ -39,7 +39,7 @@ param (
 
 .\Build.ps1 -Env $Env -Configuration $Configuration -Continue
 
-Publish-Dotnet -Path "EnvPOC2\EnvPOC.sln" -Env $Env
+Publish-Dotnet -Path "EnvPOC2\EnvPOC.sln" -Env $Env -Configuration $Configuration
 
 if ($Continue -eq $false)
 {
