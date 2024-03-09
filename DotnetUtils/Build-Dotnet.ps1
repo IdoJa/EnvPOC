@@ -37,9 +37,9 @@ function Build-Dotnet {
     # Find the path to the appsettings.json of the source code.
     $solutionOrProjectDirectoryPath = (Get-Item "$Path").Directory.FullName
     $appsettingsRelativePath = Get-ChildItem -Path "$solutionOrProjectDirectoryPath" -Filter appsettings.json -Recurse -ErrorAction SilentlyContinue -Force -Name |  Where { $_ -NotMatch "bin" } | Where { $_ -NotMatch "obj" }
-    if (!$appsettingsRelativePath) 
+    if (!$appsettingsRelativePath)
     {
-        Write-Host "An 'appsettings.json' file was not found within the path of '$Path' or its subdirectories"
+        Write-Host "An 'appsettings.json' file was not found within the path of '$solutionOrProjectDirectoryPath' or its subdirectories."
         [Environment]::Exit(1)
     }
 
