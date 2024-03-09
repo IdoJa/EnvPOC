@@ -42,7 +42,7 @@ The [Build.ps1](/Build.ps1) script changes the `appsettings.json`'s `Environment
 
 ### Edit the script to your needs
 
-In [Build.ps1](/Build.ps1), starting from line 39, edit or add lines to your specific pipeline needs.
+In [Build.ps1](/Build.ps1), starting from line 39, set / add `Build-Dotnet` command lines to match the building execution order of your needs, where only the `-Path` parameter is editable.
 
 **For example:**
 
@@ -108,7 +108,7 @@ The [Publish.ps1](/Publish.ps1) script builds pre-defined solutions or projects 
 
 ### Edit the script to your needs
 
-In [Publish.ps1](/Publish.ps1), starting from line 42, edit or add lines to your specific pipeline needs.
+In [Publish.ps1](/Publish.ps1), starting from line 42, set / add `Publish-Dotnet` command lines to match the publishing execution order of your needs, where only the `-Path` parameter is editable.
 
 **For example:**
 
